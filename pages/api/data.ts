@@ -1,6 +1,6 @@
 const { GoogleSpreadsheet } = require("google-spreadsheet");
 
-export default async function handler(req, res) {
+export default async function handler(req: any, res: any) {
   const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID);
 
   await doc.useServiceAccountAuth({
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   const sheet = doc.sheetsByIndex[0];
   const unformatedRows = await sheet.getRows();
 
-  const rows = unformatedRows.map((row) => {
+  const rows = unformatedRows.map((row: any) => {
     return {
       email: row["Endereço de e-mail"],
       nome: row["Nome e sobrenome"],

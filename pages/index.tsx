@@ -1,10 +1,15 @@
 import { GetServerSideProps } from "next";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 
 import SelectRecord from "../components/SelectRecord";
 import SiteAppBar from "../components/SiteAppBar";
+import Record from "../types/Record";
 
-const Home = ({ records }) => {
+type HomeProps = {
+  records: Record[];
+}
+
+const Home = ({ records }: HomeProps) => {
   return (
     <>
       <SiteAppBar />
@@ -26,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         return res.json();
       }
     })
-    .then((res) => {
+    .then((res: Record[]) => {
       return res;
     });
 

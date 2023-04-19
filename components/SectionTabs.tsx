@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
 import Field from "./Field";
+import Record from "../types/Record";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -39,7 +40,12 @@ function a11yProps(index: number) {
   };
 }
 
-const SectionTabs = ({ record }) => {
+type SectionTabsProps = {
+  record: Record;
+};
+
+const SectionTabs = (props: SectionTabsProps) => {
+  const { record } = props;
   const [value, setValue] = useState(0);
 
   const handleChange = (event: SyntheticEvent, newValue: number) => {

@@ -2,8 +2,14 @@ import { useState } from "react";
 import { Box, Grid, Paper, Tab, Tabs, Typography } from "@mui/material";
 import SectionTabs from "./SectionTabs";
 import Field from "./Field";
+import Record from "../types/Record";
 
-const Record = ({ record }) => {
+type RecordCardProps = {
+  record: Record;
+};
+
+const RecordCard = (props: RecordCardProps) => {
+  const { record } = props;
   const [value, setValue] = useState("one");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -34,4 +40,4 @@ const Record = ({ record }) => {
   );
 };
 
-export default Record;
+export default RecordCard;

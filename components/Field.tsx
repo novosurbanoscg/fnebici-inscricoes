@@ -1,6 +1,12 @@
 import { Grid, Typography } from "@mui/material";
 
-const Field = ({ label, value }) => {
+type FieldProps = {
+  label: string;
+  value: string;
+};
+
+const Field = (props: FieldProps) => {
+  const { label, value }  = props;
   return (
     <Grid item>
       <Typography variant="subtitle2">{label}</Typography>

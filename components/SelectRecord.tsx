@@ -7,18 +7,24 @@ import {
   Paper,
   Select,
 } from "@mui/material";
-import Record from "./Record";
+import RecordCard from "./RecordCard";
+import Record from "../types/Record";
 
-const SelectRecord = ({ records }) => {
+type SelectRecordProps = {
+  records: Record[];
+};
+
+const SelectRecord = (props: SelectRecordProps) => {
+  const { records } = props;
   const [selectedEmail, setSelectedEmail] = useState(records[0].email);
-  const [selectedRecord, setSelectedRecord] = useState(records[0]);
+  const [selectedRecord, setSelectedRecord] = useState<Record>(records[0]);
 
   const handleChange = (event: { target: { value: string } }) => {
     setSelectedEmail(event.target.value);
     const record = records.find(
       (record) => record.email === event.target.value
     );
-    setSelectedRecord(record);
+    setSelectedRecord(record as Record);
   };
 
   return (
@@ -36,7 +42,7 @@ const SelectRecord = ({ records }) => {
             >
               {records.map((record, i) => (
                 <MenuItem
-                  key={`${record.i}${record.email}`}
+                  key={`${i}${record.email}`}
                   value={record.email}
                 >{`${String(i + 1).padStart(2, "0")} - ${
                   record.nome
@@ -46,7 +52,7 @@ const SelectRecord = ({ records }) => {
           </FormControl>
         </Box>
       </Paper>
-      <Record record={selectedRecord} />
+      <RecordCard record={selectedRecord} />
     </>
   );
 };

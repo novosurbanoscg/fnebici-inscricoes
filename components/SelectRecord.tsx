@@ -1,10 +1,10 @@
 import { useState } from "react";
 import {
   Box,
-  Button,
   FormControl,
   InputLabel,
   MenuItem,
+  Paper,
   Select,
 } from "@mui/material";
 import Record from "./Record";
@@ -23,27 +23,29 @@ const SelectRecord = ({ records }) => {
 
   return (
     <>
-      <Box py={3}>
-        <FormControl>
-          <InputLabel id="select-record">Selecionar inscrição</InputLabel>
-          <Select
-            labelId="select-record"
-            id="select-record"
-            value={selectedEmail}
-            label="Selecionar inscrição"
-            onChange={handleChange}
-          >
-            {records.map((record, i) => (
-              <MenuItem
-                key={`${record.i}${record.email}`}
-                value={record.email}
-              >{`${String(i + 1).padStart(3, "0")} - ${record.nome} (${
-                record.email
-              })`}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
+      <Paper>
+        <Box my={3} p={3}>
+          <FormControl size="small">
+            <InputLabel id="select-record">Selecionar inscrição</InputLabel>
+            <Select
+              labelId="select-record"
+              id="select-record"
+              value={selectedEmail}
+              label="Selecionar inscrição"
+              onChange={handleChange}
+            >
+              {records.map((record, i) => (
+                <MenuItem
+                  key={`${record.i}${record.email}`}
+                  value={record.email}
+                >{`${String(i + 1).padStart(2, "0")} - ${
+                  record.nome
+                }`}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
+      </Paper>
       <Record record={selectedRecord} />
     </>
   );

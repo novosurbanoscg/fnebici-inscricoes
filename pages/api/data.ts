@@ -15,8 +15,9 @@ export default async function handler(req: any, res: any) {
 
   const rows = unformatedRows.map((row: any) => {
     return {
-      email: row["Endereço de e-mail"],
+      timestamp: row["Carimbo de data/hora"],
       nome: row["Nome e sobrenome"],
+      email: row["Endereço de e-mail"],
       tel: row["Telefone (por favor, informe o DDD)"],
       uf: row["Estado"],
       cidade: row["Cidade"],

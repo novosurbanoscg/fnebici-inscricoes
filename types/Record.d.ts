@@ -1,4 +1,5 @@
 type Record = {
+  timestamp: string;
   email: string;
   nome: string;
   tel: string;
